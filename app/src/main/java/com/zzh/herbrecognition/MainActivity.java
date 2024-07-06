@@ -12,10 +12,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -28,13 +24,10 @@ import androidx.core.content.FileProvider;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.databinding.DataBindingUtil;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.zzh.herbrecognition.databinding.ActivityMainBinding;
-
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -88,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
             public void handleMessage(@NonNull Message msg) {
                 if (msg.what == MESSAGE_REQUEST_SUCCESS) {
                     Bundle bundle = msg.getData();
-                    String label = bundle.getString("label");
-                    float confidence = bundle.getFloat("confidence");
                     Toast.makeText(MainActivity.this, "识别成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                     intent.putExtras(bundle);
